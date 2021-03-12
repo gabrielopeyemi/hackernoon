@@ -5,7 +5,7 @@ export const Nav = styled.nav`
   display: flex;
 `;
 export const NavLeft = styled.div`
-  margin: 10px auto 10px 20px;
+  margin: 20px auto 20px 20px;
 `;
 
 export const NavRight = styled.div`
@@ -13,33 +13,40 @@ export const NavRight = styled.div`
 `;
 export const NavLink = styled.div`
   margin: 10px;
+  justify-content: center;
+display: flex;
+align-items: center;
 `;
 export const InputStyle = styled.div`
   display: flex;
   justify-content: 'center';
   align-items: 'center';
   text-align: 'center';
-  width: 200px;
+  width: 250px;
   outline-color: rgb(0, 255, 0);
   background-color: ${primaryColor};
   background: rgb(0, 59, 0) none repeat scroll 0% 0%;
   border: medium none;
   padding: 10px 20px 10px 10px;
   border-radius: 2px;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1rem;
   transition: all 120ms ease-in-out 0s;
   outline-color: rgb(0, 187, 0);
   color: rgb(0, 255, 0);
+  &::placeholder {
+    font-weight: 900;
+    color: red;
+  }
 `;
 export const InputBoxStyle = styled.input`
-  width: 200px;
+  width: 100%;
   background: rgb(0, 59, 0);
   border: 0;
   color: ${primaryColor};
   outline: none;
   outline-color: rgb(0, 255, 0);
 `;
+// 30px
 
 export interface TypeArgs{
   Outline?: boolean;

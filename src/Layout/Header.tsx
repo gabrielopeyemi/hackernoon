@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import LOGO from '../images/logo/hn-logo.png'
-import { NavLeft, NavRight, Nav, NavLink, Icon, IconButton } from '../assets/Styles/index';
+import { NavLeft, NavRight, Nav, NavLink, IconButton } from '../assets/Styles/index';
 import { Button } from '../components/Button';
 import { primaryColor } from '../config';
 import { Input } from '../components/Input';
@@ -8,7 +8,11 @@ export default function Header() {
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
   }
-  const [darkMode, setDarkMode] = useState<Boolean>(true)
+
+  const [darkMode, setDarkMode] = useState<Boolean>(true);
+  useEffect(() => {
+    return localStorage.setItem('DarkMode', 'true');
+  }, [darkMode])
   return (
     <>
       <Nav style={{backgroundColor: primaryColor}}>
@@ -33,9 +37,11 @@ export default function Header() {
           </NavLink>
           <NavLink>
             <IconButton>
-              <Icon style={{margin: 10}} onClick={handleDarkMode}>
-                {darkMode ? <i  className="fas fa-moon"></i> : <i  className="fas fa-sun"></i>}
-              </Icon>
+              <div onClick={handleDarkMode}>
+                <i style={{
+                  fontSize: '30px'
+                }} className={darkMode ? 'fas fa-moon' : 'fas fa-sun'}></i>
+              </div>
             </IconButton>
           </NavLink>
         </NavRight>

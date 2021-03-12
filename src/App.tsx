@@ -3,8 +3,7 @@ import './index.css'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Home from "./pages/Home";
 
@@ -28,11 +27,7 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function About() {
-  return <h2>About</h2>;
-}
+};
 
 function Users() {
   return <h2>Users</h2>;
