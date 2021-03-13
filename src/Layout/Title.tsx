@@ -1,0 +1,24 @@
+import React from 'react'
+import styled from 'styled-components';
+
+export default function Title(props: any) {
+  return (
+    <>
+      <TitleDiv>{props.data}</TitleDiv>
+    </>
+  )
+}
+const TitleDiv = styled.h1`
+    margin-bottom: 0px;
+    margin-top: 0px;
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 2.5em;
+    letter-spacing: 0px;
+    font-family: "IBM Plex Mono", monospace;
+    line-height: 1.4;
+    margin: 0.67em 0px;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    font-weight: 800;
+`;

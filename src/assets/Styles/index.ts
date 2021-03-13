@@ -86,3 +86,36 @@ export const IconButton = styled.button`
   margin-right: 10px;
   padding-right: 10px;
 `
+export const AvaterImg = styled.img`
+  max-width: 50px;
+  object-fit: cover;
+  box-shadow: rgb(194, 202, 214) 0px 0.2em, rgb(194, 202, 214) 0px -0.2em, rgb(194, 202, 214) 0.2em 0px, rgb(194, 202, 214) -0.2em 0px;
+  border-style: none;
+`;
+export const AvatarLink = styled.a`
+color: rgb(0, 255, 0);
+background-image: none;
+`;
+export interface  dataArgs {
+  color ?: string;
+}
+export const Alink = styled.a<dataArgs>`
+  padding: 2px 0px 1px;
+  background-image: linear-gradient(transparent 0%, transparent calc(50% - 9px), rgba(0, 255, 0, 0.35) calc(50% - 9px), rgba(0, 255, 0, 0.35) 100%);
+  transition: background-position 120ms ease-in-out 0s, padding 120ms ease-in-out 0s;
+  background-size: 100% 200%;
+  background-position: 0px 0px;
+  word-break: break-word;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0px;
+  color: ${(p: any) => p.color ? primaryColor : 'rgb(60, 60, 59)'};
+  font-family: "IBM Plex Mono", monospace;
+  line-height: 1.4;
+  &:hover{
+    background-image: linear-gradient(transparent 0%, transparent calc(50% - 9px), rgb(0, 255, 0) calc(50% - 9px), rgb(0, 255, 0) 100%);
+    background-position: 0px 100%;
+    text-decoration: none;
+    color: rgb(60, 60, 59);
+  };
+`;

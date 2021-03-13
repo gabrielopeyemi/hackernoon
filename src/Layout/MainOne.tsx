@@ -1,42 +1,30 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, {useState} from 'react'
-import styled from 'styled-components';
-import { Data } from './../database';
-import Heart from './../images/icons/heart.png';
-import Money from './../images/icons/money.png';
-import Boat from './../images/icons/boat.png';
-import Light from './../images/icons/light.png';
-export default function MainOne() {
-  const [like, setLike] = useState<number>(0);
-  const addLike = (like: number) => {
-    let add = like+1
-    setLike(add);
-  }
+import React from 'react'
+import styled, { keyframes } from 'styled-components';
+import { Like } from './Like';
+export default function MainOne(props: any) {
+  // const addLike = () => {
+  //   // let add = like+1
+  //   // setLike(add);
+  //   // console.log(likeType)
+  // }
+
   return (
-    <Container>
-      <Title>{Data.title}</Title>
       <StoryHero className='row'>
         <StoryHeroLeft className='col-md-6'>
           <a href='/'>
-            {Data.createdAt}
+            {props.data.createdAt}c
           </a>
-          <Span style={{marginLeft: '10px'}} className="stat">
+          <Span style={{marginLeft: '10px'}}>
             <i aria-hidden="true" className="fas fa-star"></i>
-            493 reads
+            493 
           </Span>
           <Icon aria-hidden="true" className="fas fa-bookmark "></Icon>
         </StoryHeroLeft>
         <StoryHeroRight className='col-md-6'>
-          <label>{like}</label>
-            <div>
-              <IconImg onClick={(e: any) => addLike(like)} src={Heart} alt='heart'/>
-              <IconImg data-usertype="user" data-emoji="Light" className="emoji not-active" src={Light} data-active="false"/>
-              <IconImg data-usertype="user" data-emoji="Boat" className="emoji not-active" src={Boat} data-active="false"/>
-              <IconImg data-usertype="user" data-emoji="money" className="emoji not-active" src={Money} data-active="false"/>
-            </div>
+          <Like />
         </StoryHeroRight>
       </StoryHero>
-    </Container>
   )
 }
 
@@ -51,7 +39,7 @@ const StoryHeroRight = styled.div`
   justify-content: flex-end;
 `;
 const Span = styled.span`
-  background: #000 none repeat scroll 0% 0%;
+  background: rgb(246, 247, 249) none repeat scroll 0% 0%;
   color: rgb(60, 60, 59);
   padding: 4px 10px;
   margin: 0px 10px;
@@ -62,10 +50,46 @@ const Span = styled.span`
   width: 120px;
 
 `;
-const IconImg = styled.img`
-  margin-left: 5px;
-  margin-right: 5px;
-  height: 30px;
+export interface heartLightArgs {
+  Light: boolean;
+}
+const Moves = keyframes`
+  0% {
+      transform: translate(-50%, -50%) scale(0.2);
+      opacity: 0;
+    }
+  35% {
+      transform: translate(-50%, -30px) scale(1.5);
+      opacity: 1;
+  }
+  100% {
+      transform: translate(-50%, -45px) scale(2.75);
+      opacity: 0;
+  }0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+  }
+  35% {
+      transform: translate(-50%, -30px) scale(1.5);
+      opacity: 1;
+  }
+  100% {
+      transform: translate(-50%, -45px) scale(2.75);
+      opacity: 0;
+  }
+
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+  }
+  35% {
+      transform: translate(-50%, -30px) scale(1.5);
+      opacity: 1;
+  }
+  100% {
+      transform: translate(-50%, -45px) scale(2.75);
+      opacity: 0;
+  }
 `;
 const Icon = styled.i`
   display: block;
