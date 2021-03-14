@@ -2,21 +2,29 @@ import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MainFont } from '../config';
+import { primaryColor } from './../config';
 
-export const Card = () => {
+export const Card = (props?: any) => {
+  const {
+    companyName,
+    title,
+    mainImage,
+    profile,
+    createdAt
+  } = props.data
+  console.log({ data: props.data.profile });
+  console.log('hello')
   return (
     <div>
       <Article className="card text-left">
         <div>
           <TitleWrapper>
-            <Link to='/' style={{textDecoration: 'none'}}>
-              <Title className="card-title">Bitcoin's Market Cycle Peak is a Lot Closer Than You Think</Title>
-            </Link>
-            <Link to='/'>
+            <>
+              <A className="card-title">{title}</A>
+            </>
               <Icon className="fas fa-bookmark"></Icon>
-            </Link>
           </TitleWrapper>
-          <Img className="card-img-top" src="https://hackernoon.com/images/NgBhuMTisXRHJvE5E2S3MKsexy52-kud036ld.jpeg" alt="" />
+          <Img className="card-img-top" src={mainImage} alt={mainImage} />
           <Tag>
             <ALink href='/'>
               Bitcoin
@@ -24,14 +32,16 @@ export const Card = () => {
           </Tag>
         </div>
       </Article>
-      <div style={{ backgroundColor: 'black' }}>
-        <div className="container">
+      <div style={{ backgroundColor: '#fff' }}>
+        <div>
           <CardFooter>
-            <Footer className='col-6' style={{margin: '10px'}}>
+            <Footer className='col-8' style={{ marginTop: '10px', marginBottom: 10,}}>
               <FooterLink href='/'>
                 <CardFooterImg src='https://firebasestorage.googleapis.com/v0/b/hackernoon-app.appspot.com/o/images%2Fwigx3JsTvDOJSxLPmAl3OdM9Xsn2-zg23uzp.jpeg?alt=media&token=20c9de74-97a4-49d4-b457-61d06d9bc04b' alt='icon' />
               </FooterLink>
-              <div>
+              <div style={{
+                marginLeft: 10,
+              }}>
                 <h3
                   style={{
                     display: 'flex',
@@ -41,24 +51,32 @@ export const Card = () => {
                   <a href='/' style={{
                     color: 'rgb(0, 255, 0)',
                     backgroundImage: 'none',
-                    fontSize: 20,
+                    fontSize: 15,
                     fontFamily: MainFont
                   }}>
-                    @gabriel
+                    @{profile.displayName}
                   </a>
                 <small style={{
                   fontFamily: MainFont,
-                  fontSize: 20,
+                    fontSize: 14,
+                  color: '#000'
                 }}>Gabriel</small>
                 </h3>
               </div>
             </Footer>
-            <FooterRight className='col-6'>
+            <FooterRight
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+            }}
+              className='col-4'>
               <div style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    margin: '10px',
-                    float: 'right'
+                    marginTop: 10,
+                    marginBottom: 10,
+                    float: 'right',
+                    color: '#000'
               }}>
                 <small>7min ago</small>
                 <small>20 min ago</small>
@@ -83,7 +101,7 @@ const Img = styled.img`
   }
 `;
 const Article = styled.article`
-  background-color: #000;
+  background-color: #fff;
   border-radius: 0;
   color: #fff;
 `;
@@ -95,16 +113,12 @@ const FooterRight = styled.div`
   margin: 20;
 `
 const Footer = styled.div`
-    -moz-box-align: center;
     align-items: center;
     display: flex;
-    grid-template-columns: 50px 1fr;
-    gap: 20px;
     align-content: start;
     margin-bottom: 0px;
     place-items: start;
-        align-items: start;
-    -moz-box-align: start;
+    align-items: start;
     padding-right: 10px;
 `;
 const CardFooterImg = styled.img`
@@ -134,20 +148,20 @@ const TitleWrapper = styled.div`
 const IButton = styled.button`
  opacity: 1 !important;
 `
+
 const Icon = styled.i`
   display: block;
   font-weight: 300;
   color: rgb(246, 247, 249);
-  margin; 10px;
+  margin: 10px;
 `;
-const Title = styled.h2`
+const Title = styled.a`
   font-family: ${MainFont};
   padding: 20px;
-  /* display: block; */
-  /* font-size: 2.25rem; */
-  font-weight: 900;
+  font-weight: 600;
   background-color: transparent;
   color: rgb(193, 202, 212);
+  font-size: 15px;
 `;
 const Tag = styled.div`
   position: absolute;
@@ -181,4 +195,28 @@ text-decoration: none;
 
   }
 }
-`
+`;
+const A = styled.div`
+  padding: 2px 0px 1px;
+  /* background-image: linear-gradient(transparent 0%, transparent calc(50% - 9px), rgba(0, 255, 0, 0.35) calc(50% - 9px), rgba(0, 255, 0, 0.35) 100%); */
+  transition: background-position 120ms ease-in-out 0s, padding 120ms ease-in-out 0s;
+  background-size: 100% 200%;
+  background-position: 0px 0px;
+  word-break: break-word;
+  line-height: 1.4;
+  cursor: pointer;
+  letter-spacing: 0px;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 900;
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: ${primaryColor};
+  &:hover{
+    padding: 2px 0px 1px;
+    background-color: ${primaryColor};
+    transition: background-position 120ms ease-in-out 0s, padding 120ms ease-in-out 0s;
+    background-size: 100% 200%;
+    background-position: 0px 0px;
+    word-break: break-word;
+  }
+`;

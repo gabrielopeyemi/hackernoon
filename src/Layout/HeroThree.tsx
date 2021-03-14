@@ -7,15 +7,15 @@ export const HeroThree = (props: any) => {
   return (
     <Body >
       <div className='row'>
-        <div className="col-md-3"></div>
-        <div className="col-md-6">
+        <div className="col-md-2"></div>
+        <div className="col-md-8">
           <Footer>
             <div className="row">
               <div className="col-md-6">
                 <Profile data={props.data} color={primaryColor}/>
               </div>
               <div className="col-md-6">
-                <A className="ad" href="https://www.youtube.com/channel/UCeYt6blRBKuNrEg_-282fSA" rel="ugc">
+                <A className="ad" href={props.link} rel="ugc">
                   <i className="fas fa-user-astronaut" aria-hidden="true"></i>
                   Subscribe to Learn ReactJS by building!
                 </A>
@@ -23,7 +23,7 @@ export const HeroThree = (props: any) => {
             </div>
           </Footer> 
         </div>
-        <div className="col-md-3"></div>
+        <div className="col-md-2"></div>
       </div>
     </Body>
   )
@@ -54,6 +54,10 @@ const Body = styled.div`
 const A = styled.a`
   color: ${primaryColor};
   text-decoration: none;
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+  font-size: 1.2rem;
   &:hover{
     color: ${primaryColor};
     text-decoration: none;

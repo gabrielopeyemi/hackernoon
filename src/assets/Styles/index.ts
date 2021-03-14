@@ -119,3 +119,16 @@ export const Alink = styled.a<dataArgs>`
     color: rgb(60, 60, 59);
   };
 `;
+export const IconDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+export const Ax = styled.a`
+  margin-left: 0px !important;
+  margin-right: 10px;
+`;
+export const Imgx = styled.img`
+  max-width: 20px;
+  color: rgb(60, 60, 59);
+  max-width: 20px;
+`;
