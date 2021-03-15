@@ -17,7 +17,7 @@ export default function App() {
           <Route path="/">
             <Home />
           </Route>
-        </Switch>
+        </Switch> 
       </div>
     </Router>
   );
