@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { MainFont } from '../config';
 import { primaryColor } from './../config';
+import { darkColor, lightColor } from '../assets/dist/color';
 
 export const Card = (props?: any) => {
   const {
@@ -15,12 +15,12 @@ export const Card = (props?: any) => {
   console.log({ data: props.data.profile });
   console.log('hello')
   return (
-    <div>
-      <Article className="card text-left">
+    <Body>
+      <Article className="card text-left" color={props.color}>
         <div>
           <TitleWrapper>
             <>
-              <A className="card-title">{title}</A>
+              <A className="card-title" color={props.color}>{title}</A>
             </>
               <Icon className="fas fa-bookmark"></Icon>
           </TitleWrapper>
@@ -32,7 +32,7 @@ export const Card = (props?: any) => {
           </Tag>
         </div>
       </Article>
-      <div style={{ backgroundColor: '#fff' }}>
+      <div style={{ backgroundColor: props.color ? darkColor : lightColor }}>
         <div>
           <CardFooter>
             <Footer className='col-8' style={{ marginTop: '10px', marginBottom: 10,}}>
@@ -59,7 +59,7 @@ export const Card = (props?: any) => {
                 <small style={{
                   fontFamily: MainFont,
                     fontSize: 14,
-                  color: '#000'
+                    color: props.color ? lightColor : darkColor
                 }}>Gabriel</small>
                 </h3>
               </div>
@@ -76,7 +76,7 @@ export const Card = (props?: any) => {
                     marginTop: 10,
                     marginBottom: 10,
                     float: 'right',
-                    color: '#000'
+                    color: props.color ? lightColor : darkColor
               }}>
                 <small>7min ago</small>
                 <small>20 min ago</small>
@@ -85,7 +85,7 @@ export const Card = (props?: any) => {
           </CardFooter>
         </div>
       </div>
-    </div>
+    </Body>
   )
 }
 
@@ -100,8 +100,16 @@ const Img = styled.img`
     transform: scale(1.05);
   }
 `;
-const Article = styled.article`
-  background-color: #fff;
+export interface colorArgs {
+  color: string;
+}
+
+const Body = styled.div`
+  border: 1px solid #fff;
+`;
+
+const Article = styled.article<colorArgs>`
+  background-color: ${(props: any )=> props.color ? darkColor : lightColor};
   border-radius: 0;
   color: #fff;
 `;
@@ -196,7 +204,7 @@ text-decoration: none;
   }
 }
 `;
-const A = styled.div`
+const A = styled.div<colorArgs>`
   padding: 2px 0px 1px;
   /* background-image: linear-gradient(transparent 0%, transparent calc(50% - 9px), rgba(0, 255, 0, 0.35) calc(50% - 9px), rgba(0, 255, 0, 0.35) 100%); */
   transition: background-position 120ms ease-in-out 0s, padding 120ms ease-in-out 0s;
@@ -208,7 +216,7 @@ const A = styled.div`
   letter-spacing: 0px;
   font-family: "IBM Plex Mono", monospace;
   font-weight: 900;
-  color: #000;
+  color: ${(p :any) => p.color ? lightColor : darkColor};
   text-decoration: underline;
   text-decoration-color: ${primaryColor};
   &:hover{

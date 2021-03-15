@@ -13,25 +13,29 @@ import { HeroThree } from '../Layout/HeroThree';
 import { Related } from '../Layout/Related';
 import { Tags } from '../Layout/Tags';
 import { Bottom } from '../Layout/Bottom';
+import { darkColor, lightColor } from '../assets/color';
 
 export default function Home() {
   const [darkMode, setDarkmode] = useState<boolean>(true);
   const handleDarkMode = () => {
     setDarkmode(!darkMode);
   };
+  const handleNavbar = () =>{
+     
+  }
 
   return (
     <>
-      <Header style={{margin: 0}} darkMode={darkMode} handleDarkMode={handleDarkMode} />
-      <div style={{backgroundColor: darkMode ? '#000' : '#fff', margin: 0, color: darkMode ? '#fff' : '#000'}}>
-        <div className='container'>
+      <Header title={Data.title} style={{ margin: 0 }} darkMode={darkMode} handleDarkMode={handleDarkMode} handleNavbar={handleNavbar}/>
+      <div style={{backgroundColor: darkMode ? darkColor : lightColor, margin: 0, color: darkMode ?  lightColor: darkColor}}>
+        <div  className='container' style={{paddingTop: 100}}>
           <Title data={Data.title}/>
           <MainOne data={Data} />
           <MainImg data={Data.mainImage} />
           <HeroOne data={Data.profile} main={Data.markup} />
           <HeroTwo />
           <HeroThree link={Data.profile.adLink} data={Data.profile} />
-          <Related data={Data.relatedStories} />
+          <Related data={Data.relatedStories} color={darkMode}/>
           <Tags data={Data.tags} />
           <Bottom />
         </div>

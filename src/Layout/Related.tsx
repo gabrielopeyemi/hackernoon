@@ -19,7 +19,7 @@ export const Related = (props?: any) => {
               <div className="col-sm-12 col-md-6 col-lg-4" key={i}
               style={{display: relatedStorie.id ? 'block' : 'none'}}
               >
-                  <Card data={relatedStorie} />
+                  <Card data={relatedStorie} color={props.color} />
                 </div> 
               )
           )}

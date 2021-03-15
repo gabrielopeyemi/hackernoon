@@ -1,2 +1,2 @@
-export const mainColor: string = '#fff';
-export const mainBackgroundColor: string = '#000'
+export const lightColor: string = '#fff';
+export const darkColor: string = '#212428'

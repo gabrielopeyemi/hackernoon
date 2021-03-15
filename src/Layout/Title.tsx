@@ -7,8 +7,6 @@ export default function Title(props: any) {
   )
 }
 const TitleDiv = styled.h1`
-    margin-bottom: 0px;
-    margin-top: 0px;
     grid-column: 1 / -1;
     text-align: center;
     font-size: 2.5em;

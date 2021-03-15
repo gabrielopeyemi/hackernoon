@@ -14,12 +14,6 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <Home />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
           <Route path="/">
             <Home />
           </Route>
@@ -28,7 +22,3 @@ export default function App() {
     </Router>
   );
 };
-
-function Users() {
-  return <h2>Users</h2>;
-}
